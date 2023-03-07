@@ -18,7 +18,7 @@ import web.service.UserService;
         }
 
 
-        @GetMapping(value = "/users")
+        @GetMapping(value = "/")
         public String viewUsers(Model model){
             model.addAttribute("users",userService.getUsersList());
             return "users";
@@ -33,7 +33,7 @@ import web.service.UserService;
         @PostMapping("/new")
         public String addNewUser(@ModelAttribute("user") User user){
             userService.addUser(user);
-            return "redirect:/users";
+            return "redirect:/";
         }
 
         @GetMapping("/users/{id}")
@@ -45,12 +45,12 @@ import web.service.UserService;
         @PatchMapping("/users/{id}")
         public String updateUser (@ModelAttribute("user") User user,@PathVariable("id")int id){
             userService.updateUser(id,user);
-            return "redirect:/users";
+            return "redirect:/";
         }
 
         @DeleteMapping("/users/{id}")
         public String deleteUser(@PathVariable("id") int id){
             userService.deleteUser(id);
-            return "redirect:/users";
+            return "redirect:/";
         }
 }
